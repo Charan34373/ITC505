@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sniper Mission Adventure</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background-color: #333;
+            color: #ffcc00;
+            text-align: center;
+            padding: 30px;
+            font-size: 2.5em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .story-section {
+            max-width: 600px;
+            background: linear-gradient(135deg, #222, #333);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            color: #ffcc00;
+            margin-bottom: 20px;
+        }
+
+        #storyText {
+            font-size: 1.5em;
+            margin: 20px 0;
+        }
+
+        .story-image {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 4px solid #ffcc00;
+            box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.8);
+        }
+
+        .choices-section button {
+            display: block;
+            width: 100%;
+            margin: 12px 0;
+            padding: 15px;
+            background: #ff6b6b;
+            color: #1a1a1a;
+            font-weight: bold;
+            border: 2px solid #ffcc00;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .choices-section button:hover {
+            background: #ffcc00;
+            color: #333;
+            border-color: #ff6b6b;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .addendum-section {
+            background: #333;
+            color: #ffcc00;
+            border-radius: 8px;
+            padding: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .addendum-section h2 {
+            margin-bottom: 10px;
+            font-size: 1.8em;
+        }
+
+        .footer {
+            background-color: #333;
+            color: #ffcc00;
+            text-align: center;
+            padding: 20px;
+            font-size: 1.1em;
+        }
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Sniper Mission Adventure</h1>
+    </header>
+
+    <main class="container">
+        <div class="story-section">
+            <div id="storyText">You are a sniper on a critical mission...</div>
+            <img id="storyImage" class="story-image" src="" alt="Story Image">
+            <div id="choices" class="choices-section"></div>
+        </div>
+        <section class="addendum-section">
+            <h2>Addendum</h2>
+    <p>This Sniper Adventure Game demonstrates a blend of strategic decision-making and interactive story paths, requiring players to make critical choices to achieve a successful mission outcome. We structured each story node with choices and consequences, then updated the game interface dynamically using JavaScript.</p>
+    <p>While developing this game, we faced several challenges:</p>
+    <ul>
+        <li><strong>Storyline Complexity:</strong> Designing branching paths for the story was one of the most challenging aspects. We had to ensure that each choice felt meaningful and led to distinct outcomes, while maintaining logical coherence between different storylines.</li>
+        <li><strong>User Interface Design:</strong> Ensuring that the interface was both visually appealing and functional was important. We wanted the game to feel immersive, with smooth navigation, dynamic content loading, and a responsive design across devices.</li>
+        <li><strong>Performance and Speed:</strong> Since the game is heavily interactive and content is dynamically loaded based on user choices, we worked on optimizing the game for performance, minimizing load times and ensuring a smooth user experience.</li>
+        <li><strong>JavaScript Functionality:</strong> A key challenge was developing the branching system in JavaScript to dynamically update the game content without needing page reloads. We had to carefully structure the code to handle multiple stages and user choices seamlessly.</li>
+        <li><strong>Testing and Debugging:</strong> With so many potential outcomes based on user choices, ensuring that there were no bugs or issues with the game logic was time-consuming. We had to playtest each possible path extensively to ensure consistency and accuracy.</li>
+    </ul>
+    <p>Despite these challenges, we followed an iterative development process to create an engaging and immersive experience. Each step was carefully planned, and we utilized tools like version control and debugging to streamline the process. We are proud of the end result and the opportunity to share this adventure with players.</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Last updated: <span id="lastModified"></span></p>
+    </footer>
+
+    <script>
+        const gameData = {
+            start: {
+                text: "You are positioned at a vantage point. Do you start scanning the area for enemies or call for intel?",
+                image: "https://play-lh.googleusercontent.com/2L_Q5TTbzzLq36_byj5aTe1Go00d4iGfRL9pm6nd0JIEUUyagSlY2C056Og_PCpnY3U=w526-h296-rw",
+                choices: [
+                    { text: "Scan the area", nextStage: "scanArea" },
+                    { text: "Call for intel", nextStage: "callIntel" }
+                ]
+            },
+            scanArea: {
+                text: "You spot an enemy patrol. Do you take the shot or wait for a clear line of sight?",
+                image: "https://media.gettyimages.com/id/1587760482/photo/donetsk-oblast-ukraine-a-view-from-the-viewfinder-of-a-ukrainian-sniper-rifle-at-a-shooting.jpg?s=612x612&w=gi&k=20&c=96rhoW4PewBY-9BNCJnnRdDLq1dBBQDLKQ5k6IywwFA=",
+                choices: [
+                    { text: "Take the shot", nextStage: "shotTaken" },
+                    { text: "Wait for a clear line of sight", nextStage: "clearSight" }
+                ]
+            },
+            callIntel: {
+                text: "You receive intel of an approaching vehicle. Do you prepare an ambush or move to another position?",
+                image: "https://www.charlieintel.com/cdn-image/wp-content/uploads/2024/08/30/black-ops-6-pc-settings-718x675.jpg?width=1200&quality=75&format=auto",
+                choices: [
+                    { text: "Prepare an ambush", nextStage: "ambush" },
+                    { text: "Move to another position", nextStage: "relocate" }
+                ]
+            },
+            shotTaken: {
+                text: "The shot was successful, but reinforcements are alerted. Do you retreat or stand your ground?",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaDxgz4DkcR0u9KHC-nL5fPhvj4Gx_yryivA&s",
+                choices: [
+                    { text: "Retreat", nextStage: "retreat" },
+                    { text: "Stand your ground", nextStage: "standGround" }
+                ]
+            },
+            clearSight: {
+                text: "You wait, but another guard spots you. You are forced to retreat.",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqVxxKKn2dPZAK3gGdoLjY6B9bEDkepondvA&s",
+                choices: []
+            },
+            ambush: {
+                text: "The ambush was successful. You escape unnoticed and mission accomplished!",
+                image: "https://i.ytimg.com/vi/wnkDyvhdJCo/maxresdefault.jpg",
+                choices: []
+            },
+            relocate: {
+                text: "You relocate, but lose sight of your target. Mission failed.",
+                image: "https://lh3.googleusercontent.com/7wOvpim_UO6Km21ZRZ-WTywW6ubI7jQcGNtCgA0VAX3dKCxAtdDRKDoknzUDeDO07QjQaaVZK3-oMLslaOJOuMBvfw=s1280-w1280-h800",
+                choices: []
+            },
+            retreat: {
+                text: "You successfully escape. The mission is a failure, but you survive.",
+                image: "https://i.ytimg.com/vi/HIDBO1bnxuc/maxresdefault.jpg",
+                choices: []
+            },
+            standGround: {
+                text: "You hold your position and eliminate reinforcements. Mission accomplished with a narrow escape!",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDN3dJVsvWZSIqCO59lYy1AwpJhWzFnFBqUg&s",
+                choices: []
+            }
+        };
+        
+        let historyStack = [];
+        
+        function startGame() {
+            displayStage("start");
+        }
+        
+        function displayStage(stageKey) {
+            const stage = gameData[stageKey];
+            const storyText = document.getElementById("storyText");
+            const storyImage = document.getElementById("storyImage");
+            const choicesSection = document.getElementById("choices");
+        
+            // Update story text
+            storyText.textContent = stage.text;
+            storyImage.src = stage.image;
+        
+            // Store the current stage for backtracking
+            historyStack.push(stageKey);
+        
+            // Clear previous choices
+            choicesSection.innerHTML = "";
+        
+            // Create choices buttons
+            stage.choices.forEach(choice => {
+                const button = document.createElement("button");
+                button.textContent = choice.text;
+                button.addEventListener("click", () => {
+                    displayStage(choice.nextStage);
+                });
+                choicesSection.appendChild(button);
+            });
+        
+            // Add a "Back" button if there is history
+            if (historyStack.length > 1) {
+                const backButton = document.createElement("button");
+                backButton.textContent = "Go Back";
+                backButton.addEventListener("click", goBack);
+                choicesSection.appendChild(backButton);
+            }
+        }
+        
+        function goBack() {
+            historyStack.pop(); // Remove the current stage
+            const previousStage = historyStack.pop(); // Get the previous stage
+            if (previousStage) {
+                displayStage(previousStage);
+            }
+        }
+        
+        // Initialize the game on page load
+        startGame();
+        
+        // Update last modified date
+        document.getElementById('lastModified').textContent = document.lastModified;
+    </script>
+</body>
+</html>
