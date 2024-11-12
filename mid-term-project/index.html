@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sniper Adventure Game</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+    overflow-x: hidden;
+}
+
+.header {
+    background-color: #333;
+    color: #ffcc00;
+    text-align: center;
+    padding: 30px;
+    font-size: 2.5em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+}
+
+.story-section {
+    max-width: 600px;
+    background: linear-gradient(135deg, #222, #333);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    color: #ffcc00;
+    margin-bottom: 20px;
+}
+
+#storyText {
+    font-size: 1.5em;
+    margin: 20px 0;
+}
+
+.story-image {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 4px solid #ffcc00;
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.8);
+}
+
+.choices-section button {
+    display: block;
+    width: 100%;
+    margin: 12px 0;
+    padding: 15px;
+    background: #ff6b6b;
+    color: #1a1a1a;
+    font-weight: bold;
+    border: 2px solid #ffcc00;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.choices-section button:hover {
+    background: #ffcc00;
+    color: #333;
+    border-color: #ff6b6b;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.addendum-section {
+    background: #333;
+    color: #ffcc00;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.addendum-section h2 {
+    margin-bottom: 10px;
+    font-size: 1.8em;
+}
+
+.footer {
+    background-color: #333;
+    color: #ffcc00;
+    text-align: center;
+    padding: 20px;
+    font-size: 1.1em;
+}
+
+    </style>
+    <link rel="stylesheet" href="sniper.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Sniper Mission Adventure</h1>
+    </header>
+
+    <main class="container">
+        <div class="story-section">
+            <div id="storyText">You are a sniper on a critical mission...</div>
+            <img id="storyImage" src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/591740/capsule_616x353.jpg?t=1697713660" alt="Sniper Start" class="story-image">
+            <div id="choices" class="choices-section"></div>
+        </div>
+        <section class="addendum-section">
+            <h2>Addendum</h2>
+            <p>This Sniper Adventure Game demonstrates a blend of strategic decision-making and interactive story paths, requiring players to make critical choices to achieve a successful mission outcome. We structured each story node with choices and consequences, then updated the game interface dynamically using JavaScript.</p>
+            <p><strong>Process and Challenges:</strong></p>
+            <ul>
+                <li><strong>Planning:</strong> We mapped out the game flow with a decision tree to determine the sequence of stages and possible outcomes, which helped structure the JavaScript object for each stage.</li>
+                <li><strong>Coding:</strong> Implementing the "Go Back" functionality posed challenges, as we needed a way to track each decision. We used a history stack to allow players to backtrack, enhancing the interactive experience.</li>
+                <li><strong>Styling:</strong> Our goal was to provide a dark, suspenseful atmosphere with thematic elements using CSS, while adding vibrant color accents to increase engagement. The choice buttons and background styling helped reinforce the intense theme.</li>
+            </ul>
+            <p>Through this project, we gained insights into designing interactive content, managing game state, and improving user experience with dynamic UI elements. Debugging and refactoring were essential in achieving a seamless experience, reinforcing best practices in JavaScript and UI/UX design.</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Last updated: <span id="lastModified"></span></p>
+    </footer>
+
+    <script>const gameData = {
+        start: {
+            text: "You are positioned at a vantage point. Do you start scanning the area for enemies or call for intel?",
+            choices: [
+                { text: "Scan the area", nextStage: "scanArea" },
+                { text: "Call for intel", nextStage: "callIntel" }
+            ]
+        },
+        scanArea: {
+            text: "You spot an enemy patrol. Do you take the shot or wait for a clear line of sight?",
+            choices: [
+                { text: "Take the shot", nextStage: "shotTaken" },
+                { text: "Wait for a clear line of sight", nextStage: "clearSight" }
+            ]
+        },
+        callIntel: {
+            text: "You receive intel of an approaching vehicle. Do you prepare an ambush or move to another position?",
+            choices: [
+                { text: "Prepare an ambush", nextStage: "ambush" },
+                { text: "Move to another position", nextStage: "relocate" }
+            ]
+        },
+        shotTaken: {
+            text: "The shot was successful, but reinforcements are alerted. Do you retreat or stand your ground?",
+            choices: [
+                { text: "Retreat", nextStage: "retreat" },
+                { text: "Stand your ground", nextStage: "standGround" }
+            ]
+        },
+        clearSight: {
+            text: "You wait, but another guard spots you. You are forced to retreat.",
+            choices: []
+        },
+        ambush: {
+            text: "The ambush was successful. You escape unnoticed and mission accomplished!",
+            choices: []
+        },
+        relocate: {
+            text: "You relocate, but lose sight of your target. Mission failed.",
+            choices: []
+        },
+        retreat: {
+            text: "You successfully escape. The mission is a failure, but you survive.",
+            choices: []
+        },
+        standGround: {
+            text: "You hold your position and eliminate reinforcements. Mission accomplished with a narrow escape!",
+            choices: []
+        }
+    };
+    
+    let historyStack = [];
+    
+    function startGame() {
+        displayStage("start");
+    }
+    
+    function displayStage(stageKey) {
+        const stage = gameData[stageKey];
+        const storyText = document.getElementById("storyText");
+        const choicesSection = document.getElementById("choices");
+    
+        // Update story text
+        storyText.textContent = stage.text;
+    
+        // Store the current stage for backtracking
+        historyStack.push(stageKey);
+    
+        // Clear previous choices
+        choicesSection.innerHTML = "";
+    
+        // Create choices buttons
+        stage.choices.forEach(choice => {
+            const button = document.createElement("button");
+            button.textContent = choice.text;
+            button.addEventListener("click", () => {
+                displayStage(choice.nextStage);
+            });
+            choicesSection.appendChild(button);
+        });
+    
+        // Add a "Back" button if there is history
+        if (historyStack.length > 1) {
+            const backButton = document.createElement("button");
+            backButton.textContent = "Go Back";
+            backButton.addEventListener("click", goBack);
+            choicesSection.appendChild(backButton);
+        }
+    }
+    
+    function goBack() {
+        historyStack.pop(); // Remove the current stage
+        const previousStage = historyStack.pop(); // Get the previous stage
+        if (previousStage) {
+            displayStage(previousStage);
+        }
+    }
+    
+    // Initialize the game on page load
+    startGame();
+    </script>
+    <script>
+        // Update last modified date
+        document.getElementById('lastModified').textContent = document.lastModified;
+    </script>
+</body>
+</html>
