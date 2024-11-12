@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holy Grail Layout Page</title>
+    <style>
+    /* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%; /* Ensures the body takes up the full height of the viewport */
+    width: 100%; /* Ensures the body takes up the full width of the viewport */
+}
+
+/* Body Styling */
+body {
+    font-family: 'Roboto', sans-serif; /* A more modern font */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: linear-gradient(135deg, #f5f5f5, #e1e1e1); /* Subtle background gradient */
+}
+
+/* Header Styling */
+.header {
+    background-color: #ff6f61; /* A vibrant coral color */
+    color: white;
+    text-align: center;
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    border-radius: 8px;
+    margin: 10px; /* Space around header */
+}
+
+.header .logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Circular logo */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow for logo */
+}
+
+/* Footer Styling */
+.footer {
+    background-color: #d2691e;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 1em;
+    margin-top: auto; /* Pushes footer to the bottom */
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1); /* Adds depth to footer */
+    border-radius: 8px 8px 0 0; /* Rounds the top corners of footer */
+}
+
+/* Main Container for Holy Grail Layout */
+.container {
+    display: flex;
+    flex: 1; /* Ensures the container takes up the full remaining space */
+    margin: 20px; /* Adds margin around the container */
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Adds depth to the container */
+}
+
+/* Navigation Sidebar */
+.navigation {
+    background-color: #4caf50; /* Fresh green color */
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px 0 0 10px; /* Rounded left side */
+    color: white;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Adds depth to sidebar */
+}
+
+/* List and Links */
+.navigation ul {
+    list-style-type: none;
+}
+
+.navigation ul li {
+    margin: 15px 0;
+}
+
+.navigation ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: color 0.3s;
+}
+
+.navigation ul li a:hover {
+    color: #ffeb3b; /* Yellow on hover */
+}
+
+/* Main Content Area */
+.content {
+    background-color: #f8b3d1; /* Soft pink color */
+    flex: 2;
+    padding: 30px;
+    text-align: center;
+    border-radius: 0 10px 10px 0; /* Rounded right side */
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds shadow inside */
+    color: #333;
+}
+
+/* Advertisement Sidebar */
+.sider {
+    background-color: #ffeb3b; /* Bright yellow */
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    border-radius: 0 10px 10px 0; /* Rounded right side */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Adds depth to the sidebar */
+}
+
+.sider img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%; /* Circular images */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow for images */
+}
+
+/* Hover Effects for the Main Content */
+.content h2 {
+    color: #d32f2f;
+    text-transform: uppercase;
+    font-size: 2.5em;
+    letter-spacing: 2px;
+}
+
+.content p {
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+
+/* Add some spacing and cool button effects */
+.button {
+    background-color: #4caf50; /* Fresh green for buttons */
+    color: white;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #388e3c; /* Darker green on hover */
+}
+
+/* Responsive Design for Mobile */
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stack the layout vertically on small screens */
+    }
+
+    .navigation, .sider {
+        flex: none;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .content {
+        flex: 1;
+    }
+}
+</style>
+    <link rel="stylesheet" href="lab6.css">
+</head>
+<body>
+    <!-- Header Section with Title and Image -->
+    <header class="header">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_mCr5ninnGBUM_vuTtPe7P0R9BNcpmpKSOA&s" alt="Logo" class="logo">
+        <h1>Own Creation page</h1>
+    </header>
+
+    <!-- Main Container for Holy Grail Layout -->
+    <div class="container">
+        <!-- Menu Sidebar with Navigation Links -->
+        <aside class="navigation">
+            <p><a href="https://www.flipkart.com/" target="_blank">Navigation</a></p>
+        <ul>
+              <li><a href="https://www.flipkart.com/" target="_blank">Home</a></li>
+              <li><a href="https://brands.flipkart.com/catapult-about" target="_blank">About</a></li>
+              <li><a href="https://wareiq.com/fulfillment-services/flipkart-prep-services/" target="_blank">Services</a></li>
+              <li><a href="https://gethuman.com/phone-number/FlipKart" target="_blank">Contact</a></li>
+        </ul>
+
+        </aside>
+
+        <!-- Main Content Area for JavaScript -->
+        <main class="content">
+            <h2>JavaScript Sorting Example</h2>
+            <p>Enter numbers separated by commas:</p>
+            <input type="text" id="numberInput" placeholder="e.g., 5,3,8,1">
+            <button id="sortButton">Sort Numbers</button>
+            <p id="result"></p>
+        </main>
+
+        <!-- Advertisement Sidebar with Amazon Link -->
+        <aside class="sider">
+            <p>Advertisement</p>
+            <a href="https://www.amazon.com/" target="_blank">
+                <img src="https://www.shutterstock.com/image-photo/nov-22-2019-palo-alto-260nw-1569353527.jpg" alt="Ad Image">
+            </a>
+        </aside>
+    </div>
+
+    <!-- Footer Section with Addendum and Last Modified Script -->
+    <footer class="footer">
+        <p>Addendum: This JavaScript program takes a list of numbers, sorts them using bubble sort, and displays the sorted result. It provides basic validation and alerts for incorrect input.</p>
+        <p id="lastModified">Last Modified: </p>
+    </footer>
+
+    <!-- External JavaScript File -->
+    <script>// Quicksort Function
+        function quickSort(arr) {
+            if (arr.length <= 1) return arr; // Base case: arrays with 1 or 0 elements are already sorted
+        
+            const pivot = arr[arr.length - 1];
+            const left = [];
+            const right = [];
+        
+            for (let i = 0; i < arr.length - 1; i++) {
+                if (arr[i] < pivot) {
+                    left.push(arr[i]);
+                } else {
+                    right.push(arr[i]);
+                }
+            }
+        
+            return [...quickSort(left), pivot, ...quickSort(right)]; // Concatenate left, pivot, and right arrays
+        }
+        
+        // Event Listener for the Sort Button
+        document.getElementById('sortButton').addEventListener('click', () => {
+            const input = document.getElementById('numberInput').value;
+            if (input.trim() === "") {
+                alert("Please enter some numbers to sort.");
+                return;
+            }
+        
+            // Convert input string to an array of numbers
+            const numArray = input.split(',').map(num => parseInt(num.trim()));
+        
+            // Check if the input contains only numbers
+            if (numArray.some(isNaN)) {
+                alert("Please enter valid numbers separated by commas.");
+                return;
+            }
+        
+            // Sort the numbers and display the result using quickSort
+            const sortedArray = quickSort(numArray);
+            document.getElementById('result').textContent = `Sorted Array: ${sortedArray.join(', ')}`;
+        });
+        
+        // Display the Last Modified Date
+        document.getElementById('lastModified').textContent = `Last Modified: ${document.lastModified}`;
+        </script>
+</body>
+</html>
